@@ -49,6 +49,19 @@ SELECT GROUP_CONCAT( "<COLUMN_NAME>" ) FROM "<TABLE NAME>"
 ___IF THIS DOES NOT WORK, TRY WITHOUT THE QUOTES!!___
 
 
+In-line Conditions (an if statement)
+------------------
+
+```
+SELECT "value" CASE WHEN condition>0 THEN 'return this' ELSE 'return instead' END
+```
+
+This may be best used with timing attacks, like `SLEEP(1)` as the else condition action. Other option might be:
+
+```
+SELECT ( IF ( 1=1, "Condition successful!", "Condition errored!" ) )
+```
+
 Get the path of the running MySQL instance
 ------------------
 
